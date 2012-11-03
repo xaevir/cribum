@@ -1,14 +1,14 @@
 define(function(require) {
 
 var AlertView = require('views/site/alert').alert
-  , tpl = require('text!templates/emergencies/create_emergency.mustache') 
-  , Emergency = require('models/emergency')
+  , tpl = require('text!templates/subjects/create_subject.mustache') 
+  , Subject = require('models/subject')
 
   return Backbone.View.extend({
 
     template: Hogan.compile(tpl),
    
-    className: 'modal modal-emergency',
+    className: 'modal modal-subject',
 
     events: {
       'submit form' : 'submit'
@@ -34,11 +34,11 @@ var AlertView = require('views/site/alert').alert
         return
       var params = this.$('form').serializeObject();
       var self = this
-      $.post('/emergencies', params, function(data){
+      $.post('/subjects', params, function(data){
         $('.modal-backdrop').remove();
         $('.modal').remove();
-        new AlertView('Emergency created')
-        window.events.trigger("emergencyCreated-create_emergency.js");
+        new AlertView('Created')
+        window.events.trigger("subjectCreated-create_subject.js");
       }) 
     },
 

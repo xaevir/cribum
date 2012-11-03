@@ -1,10 +1,3 @@
-define(function(require) {
-
-  var expect = chai.expect,
-      HomepageWish = require('models/homepage_wish');
-
-
-
 define(['/test.js'], function(Test) {
 
   //var testedRoutes = require('views/wishes/create_wish_homepage');

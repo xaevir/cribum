@@ -29,8 +29,8 @@ define(function(require) {
 
   //var tpl = require('text!templates/wishes/wish.mustache')
   //require('order!routers/tested-routes.js')
-  require('models/homepage_wish.test.js')
-  require('models/newUser.test.js')
+  require('order!models/homepage_wish.test.js')
+  require('order!models/newUser.test.js')
   //var App = require('order!app')
   //App.initialize();
   

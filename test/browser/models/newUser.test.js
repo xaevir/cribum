@@ -6,9 +6,9 @@ define(function(require) {
   describe("NewUser Model", function() {
     describe("initialize()", function() {
       it("should call setSlug on change:username", function() {
-        var newUser = new NewUser()
-        var spy = sinon.spy(newUser, 'setSlug');
-        newUser.set({username: 'sam kin'})
+        var user = new NewUser()
+        var spy = sinon.spy(user, 'setSlug');
+        user.set({username: 'sam kin'})
         expect(spy).to.have.been.calledWith('sam kin')
       });
     });

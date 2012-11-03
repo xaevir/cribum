@@ -4,8 +4,8 @@ var ModelExtended = require('models/modelExtended')
   , SignupView = require('views/users/signup').signup
   , LoginView = require('views/users/login').login
   , SubjectsNav = require('views/subjects_nav')
-  , Emergencies = require('collections/emergencies')
-  , Emergency = require('models/emergency')
+  , Subjects = require('collections/subjects')
+  , Subject = require('models/subject')
   , Messages = require('collections/messages')
   , Message = require('models/message')
   , ContactedCompanies = require('collections/contacted-companies')
@@ -59,8 +59,8 @@ var AppRouter = Backbone.Router.extend({
     }); 
 
     var self = this
-    events.on("emergencyCreated-create_emergency.js", function() {
-      self.navigate('emergencies', {trigger: true})
+    events.on("subjectCreated-create_subject.js", function() {
+      self.navigate('subjects', {trigger: true})
     });
 
   },
@@ -72,11 +72,11 @@ var AppRouter = Backbone.Router.extend({
     , 'how-it-works':                           'how_it_works'
     , 'profile/:username':                      'profile'
     , 'profile/:username/edit':                 'profile_edit'
-    , 'emergencies':                            'emergencies' 
-    , 'emergencies/:id':                        'emergency' 
+    , 'subjects':                               'subjects' 
+    , 'subjects/:id':                           'subject' 
     , 'helper/:id':                             'helper' 
-    , 'emergencies/:id/contacted-companies':    'contacted_companies' 
-    , 'emergencies/:id/seller':                 'seller' 
+    , 'subjects/:id/contacted-companies':       'contacted_companies' 
+    , 'subjects/:id/seller':                    'seller' 
     , 'subjects':                               'subjects'
     , 'subjects/:id':                           'subject'
     , 'lead/:id/:slug':                         'lead'
@@ -141,42 +141,44 @@ AppRouter.prototype.spider = function(){
   _gaq.push(['_trackPageview', '/spider'])
 }
 
-AppRouter.prototype.emergencies  = function(e) {
+AppRouter.prototype.subjects  = function(e) {
   var self = this
-  $.get('/emergencies', function(emergencies) {
-    $('body').attr('id','emergencies')
+  $.get('/subjects', function(subjects) {
+    $('body').attr('id','subjects')
     var views = []
-    _.each(emergencies, function(emergency){
-      var chatCompositeView = new ChatCompositeView({
-        bigTextarea: true, 
-        user: self.user, 
-        noReply: true,
-        timer: emergency.timer,
-        model: new Emergency(emergency)})
-      var messages = new Messages(emergency)
+    _.each(subjects, function(subject){
+      var chatCompositeView = new ChatCompositeView(
+        {
+          bigTextarea: true, 
+          user: self.user, 
+          noReply: true,
+          timer: subject.timer,
+          model: new Subject(subject)
+        })
+      var messages = new Messages(subject)
       chatCompositeView.messagesView = new MessagesView({collection: messages, truncate: 200, user: self.user})
       if (self.user.get('role') == 'admin')
-        $(chatCompositeView.el).prepend('<div class="admin-options">shortId:'+emergency.shortId+'</div>')
-        //$(chatCompositeView.el).prepend('<div class="admin-options"><a href="/emergencies/'+subject_id+'/setup">setup</a></div>')
+        $(chatCompositeView.el).prepend('<div class="admin-options">shortId:'+subject.shortId+'</div>')
+        //$(chatCompositeView.el).prepend('<div class="admin-options"><a href="/subjects/'+subject_id+'/setup">setup</a></div>')
 
       views.push(chatCompositeView);
    }, this);
     var view = new ChatColumns({views: views})
     var html =  view.render().el
     $('#app').html(html);
-    _gaq.push(['_trackPageview', '/emergencies'])
-    document.title = 'Emergencies';
+    _gaq.push(['_trackPageview', '/subjects'])
+    document.title = 'Subjects';
   });
 }
 
-AppRouter.prototype.reset_emergencies = function(){
+AppRouter.prototype.reset_subjects = function(){
   $('body').removeAttr('id')
 }
 
-AppRouter.prototype.emergency = function(id) {
+AppRouter.prototype.subject = function(id) {
   var self = this
-  $.get('/emergencies/'+id, function(res) {
-    $('body').attr('id','emergency')
+  $.get('/subjects/'+id, function(res) {
+    $('body').attr('id','subject')
     if (res.success === false)
       return self.notFound()
     // header
@@ -185,7 +187,7 @@ AppRouter.prototype.emergency = function(id) {
     chatCompositeView.messagesView = new MessagesView({collection: messages, user: self.user})
     chatCompositeView.replyView = new ReplyView({subject_id: id, 
                                                  parentView: chatCompositeView, 
-                                                 context: 'emergency',
+                                                 context: 'subject',
                                                  bigTextarea: true,
                                                  user: self.user})
     $('#app').html('<div id="header" />')
@@ -209,24 +211,24 @@ AppRouter.prototype.emergency = function(id) {
     var html =  view.render().el
     $('#app').append('<div id="body" />')
     $('#body' ,'#app').append(html);
-    _gaq.push(['_trackPageview', '/emergencies/'+ res.subject.body])
-    document.title = 'Emergency';
+    _gaq.push(['_trackPageview', '/subjects/'+ res.subject.body])
+    document.title = 'Subject';
   });
 }
 
-AppRouter.prototype.reset_emergency = function(){
+AppRouter.prototype.reset_subject = function(){
   $('body').removeAttr('id')
 }
 
 AppRouter.prototype.seller = function(id, slug) {
-  $.get('/emergencies/'+id+'/seller', $.proxy(function(res) {
+  $.get('/subjects/'+id+'/seller', $.proxy(function(res) {
     $('body').addClass('_lead seller')
     var message = '<div class="instructions"><h2>How this page works</h2>\
       <p>You have a lead from a potential buyer. To send a message to the lead\
          all you have to do is reply in the box below.\
       </p></div>'
     $('#app').html(message)
-    var messages = new Messages([res.emergency])
+    var messages = new Messages([res.subject])
     var bubblesView = new BubblesView({collection: messages,
                                        user: this.user})
     $('#app').append(bubblesView.render().el)
@@ -241,7 +243,7 @@ AppRouter.prototype.seller = function(id, slug) {
     var ul = $('.bubbles')[0];
     var height = ul.scrollHeight
     ul.scrollTop = height
-    _gaq.push(['_trackPageview', '/lead/'+ res.emergency.body])
+    _gaq.push(['_trackPageview', '/lead/'+ res.subject.body])
     document.title = 'Ruby Rate';
   }, this));
 }
@@ -276,7 +278,7 @@ AppRouter.prototype.lead = function(id, slug) {
     var ul = $('.bubbles')[0];
     var height = ul.scrollHeight
     ul.scrollTop = height
-    _gaq.push(['_trackPageview', '/lead/'+ res.emergency.body])
+    _gaq.push(['_trackPageview', '/lead/'+ res.subject.body])
     document.title = 'Ruby Rate';
    
   }, this));
@@ -345,19 +347,19 @@ AppRouter.prototype.reset_helper = function(){
 }
 
 AppRouter.prototype.contacted_companies = function(id) {
-  $.get('/emergencies/'+id+'/contacted-companies', $.proxy(function(res) {
+  $.get('/subjects/'+id+'/contacted-companies', $.proxy(function(res) {
     $('body').attr('id','contacted-companies')
     // header
     $('#app').html('<div class="chat-composite" />')
     var message =  new Message(res.subject)
-    var emergencyHeader = new MessageBodyView({model: message, 
+    var subjectHeader = new MessageBodyView({model: message, 
                                           user: this.user})
-    $('.chat-composite','#app').html(emergencyHeader.render().el);
+    $('.chat-composite','#app').html(subjectHeader.render().el);
 
     // body
     var contactedCompanies = new ContactedCompanies(res.contacted, 
-                                                    {emergencies_id: message.id})
-    contactedCompanies.emergencies_id = message.id 
+                                                    {subjects_id: message.id})
+    contactedCompanies.subjects_id = message.id 
     var view = new ContactedCompaniesView({collection: contactedCompanies})
     $('#app').append(view.render().el);
   }, this));

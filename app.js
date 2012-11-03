@@ -18,7 +18,7 @@ Backbone = require('backbone')
 _ = require('underscore')
 var Validation = require('./public/js/libs/backbone.validation/backbone.validation.js')
   , NewUser = require('./public/js/models/newUser')
-  , HomepageEmergency = require('./public/js/models/homepage_emergency')
+  , HomepageSubject = require('./public/js/models/homepage_subject')
   , Subject = require('./models/subject')
 
 _.extend(Backbone.Model.prototype, Backbone.Validation.mixin);
@@ -328,10 +328,10 @@ app.post('/profile', loadUser, function(req, res) {
   res.send({success: true, message: 'user updated'})
 })
 
-app.get('/emergencies', function(req, res) {
-  db.subjects.find({pending: {$ne: true}}).sort({_id: -1}).toArray(function(err, emergencies) {
+app.get('/subjects', function(req, res) {
+  db.subjects.find({pending: {$ne: true}}).sort({_id: -1}).toArray(function(err, subjects) {
     if (err) throw err;
-    res.send(emergencies)
+    res.send(subjects)
   })
 })
 
@@ -349,9 +349,9 @@ function makeShortId() {
   return text;
 }
 
-app.post('/emergencies-home', function(req, res, next) {
-  var homepageEmergency = new HomepageEmergency(req.body)
-  var errors = homepageEmergency.validate()
+app.post('/subjects-home', function(req, res, next) {
+  var homepageSubject = new HomepageSubject(req.body)
+  var errors = homepageSubject.validate()
   if (errors) 
     return next(new ExternalValidationError(errors))
 
@@ -398,7 +398,7 @@ app.post('/emergencies-home', function(req, res, next) {
   })
 });
 
-app.post('/emergencies', loadUser, function(req, res) {
+app.post('/subjects', loadUser, function(req, res) {
   req.body.shortId = makeShortId() 
   req.body.author = req.user.username
   req.body.authorSlug = req.user.slug
@@ -407,13 +407,13 @@ app.post('/emergencies', loadUser, function(req, res) {
   }]
   db.collection('subjects').insert(req.body, function(err, id){
     if (err) throw err;
-    res.send({success: true, message: 'emergency inserted'})
+    res.send({success: true, message: 'subject inserted'})
   })
 });
 
-app.get('/emergencies/:id/seller', function(req, res) {
+app.get('/subjects/:id/seller', function(req, res) {
   db.subjects.findOne({_id: new ObjectID(req.params.id)}, function(err, subject) {
-    res.send({emergency: subject,
+    res.send({subject: subject,
               subject_id: req.params.id})
   })
 })
@@ -429,7 +429,7 @@ app.get('/lead/:id/:slug', function(req, res) {
       db.messages.find({convo_id: userInArray.convo_id}).sort({_id:1}).toArray(function(err, messages) {
         messages.unshift(subject)
         res.send({messages: messages,
-                  emergency: subject,
+                  subject: subject,
                   subject_id: req.params.id,   
                   convo_id: userInArray.convo_id})
       })
@@ -445,7 +445,7 @@ app.get('/helper/:id', function(req, res, next) {
 
     // send email
     var html  = '<p>Ip address: '+req.ip+'</p>'
-        html += '<p>Viewed for this emergency:</p><p>'+subject.body+'</p>'
+        html += '<p>Viewed for this subject:</p><p>'+subject.body+'</p>'
     email({subject: 'Helper Page Viewed', html: html})
 
     db.users.findOne({'username': subject.author}, function(err, user){
@@ -504,7 +504,7 @@ app.get('/helper/:id', function(req, res, next) {
   })
 
 
-app.get('/emergencies/:id', loadSubject, function(req, res) {
+app.get('/subjects/:id', loadSubject, function(req, res) {
   var subject = req.subject
   function map() {
     emit(this.convo_id, 
@@ -545,7 +545,7 @@ app.get('/emergencies/:id', loadSubject, function(req, res) {
   })
 })
 
-app.get('/emergencies/:id/contacted-companies', loadUser, andRestrictTo('admin'), function(req, res) {
+app.get('/subjects/:id/contacted-companies', loadUser, andRestrictTo('admin'), function(req, res) {
   db.subjects.findOne({_id: new ObjectID(req.params.id)}, {users:0}, function(err, subject) {
     res.send({
       subject: subject, 
@@ -554,13 +554,13 @@ app.get('/emergencies/:id/contacted-companies', loadUser, andRestrictTo('admin')
   })
 })
 
-app.post('/emergencies/:id/contacted-companies', loadUser, andRestrictTo('admin'), function(req, res) {
+app.post('/subjects/:id/contacted-companies', loadUser, andRestrictTo('admin'), function(req, res) {
   req.body._id = new ObjectID() 
   db.subjects.update({_id: new ObjectID(req.body.subject_id)}, {$push: {contacted: req.body}}) 
   res.send(req.body)
 })
 
-app.put('/emergencies/:subject_id/contacted-companies/:id', loadUser, andRestrictTo('admin'), function(req, res) {
+app.put('/subjects/:subject_id/contacted-companies/:id', loadUser, andRestrictTo('admin'), function(req, res) {
   //maybe make faster by querying for subject_id first
   delete req.body._id
   db.subjects.update({_id: new ObjectID(req.params.subject_id),
@@ -662,7 +662,7 @@ app.get('/subjects', loadUser, function(req, res) {
   })
 })
 
-app.post('/emergencies/:id/messages', function(req, res) {
+app.post('/subjects/:id/messages', function(req, res) {
   var convo_id = new ObjectID().toString()
 
   var user = {
@@ -718,8 +718,8 @@ app.post('/reply-logged-out/:id', function(req, res) {
 
   // email
   db.subjects.findOne({_id: new ObjectID(req.params.id)}, function(err, subject) {
-    var html = '<h1>First reply to emergency</h1><p><b>author:</b>'+message.author+'</p><h3>Message</h3><p>'+message.body+'</p>'
-        html += '<h2>In response to this emergency</h2><p>'+subject.body+'</p>'
+    var html = '<h1>First reply to subject</h1><p><b>author:</b>'+message.author+'</p><h3>Message</h3><p>'+message.body+'</p>'
+        html += '<h2>In response to this subject</h2><p>'+subject.body+'</p>'
     email({subject: 'First reply from seller page', html: html})
   })
 
@@ -754,9 +754,9 @@ app.post('/first-reply/:id', loadUser, function(req, res) {
 
   // email
   db.subjects.findOne({_id: new ObjectID(req.params.id)}, function(err, subject) {
-    var html = '<h1>First reply to emergency</h1><p><b>author:</b>'+message.author+'</p><h3>Message</h3><p>'+message.body+'</p>'
-        html += '<h2>In response to this emergency</h2><p>'+subject.body+'</p>'
-    email({subject: 'First reply from emergencies page', html: html})
+    var html = '<h1>First reply to subject</h1><p><b>author:</b>'+message.author+'</p><h3>Message</h3><p>'+message.body+'</p>'
+        html += '<h2>In response to this subject</h2><p>'+subject.body+'</p>'
+    email({subject: 'First reply from subjects page', html: html})
   })
 
 })
@@ -789,7 +789,7 @@ app.post('/reply/:convo_id', loadUser, function(req, res) {
       )   
     }
     var html = '<h1>Reply</h1><p><b>author:</b>'+msg.author+'</p><h3>Message</h3><p>'+msg.body+'</p>'
-        html += '<h2>In response to this emergency</h2><p>'+subject.body+'</p>'
+        html += '<h2>In response to this subject</h2><p>'+subject.body+'</p>'
     email({subject: 'Reply from special page', html: html})
 
   })

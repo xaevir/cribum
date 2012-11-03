@@ -4,5 +4,6 @@ define(function(require) {
   return Backbone.Collection.extend({
       url: '/subjects',
       model: Subject,
-  })
-})
+  });
+
+});

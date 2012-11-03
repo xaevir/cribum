@@ -1,7 +1,7 @@
 define(function(require) {
 
 var tpl = require('text!templates/navbar/main-menu.mustache')
-  , CreateEmergencyView = require('views/emergencies/create_emergency')
+  , CreateSubjectView = require('views/subjects/create_subject')
 
 return Backbone.View.extend({
   
@@ -9,7 +9,7 @@ return Backbone.View.extend({
 
   events: {
     "click a:not([href^='#'])": "pushState",
-    "click a.create-emergency": "renderEmergencyView",
+    "click a.create-subject": "renderSubjectView",
   },
 
   initialize: function(options){
@@ -34,10 +34,10 @@ return Backbone.View.extend({
     return this
   },
 
-  renderEmergencyView: function(e) {
+  renderSubjectView: function(e) {
     e.preventDefault() 
-    var createEmergencyView = new CreateEmergencyView();
-    createEmergencyView.render()
+    var createSubjectView = new CreateSubjectView();
+    createSubjectView.render()
   },
 })
 })

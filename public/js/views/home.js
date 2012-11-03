@@ -1,14 +1,14 @@
 define(function(require) {
 
 var tpl = require('text!templates/home.html')
-  , HomepageEmergency = require('models/homepage_emergency')
+  , HomepageSubject = require('models/homepage_subject')
   , ThankyouView = require('views/homepage_thankyou')      
 
 return Backbone.View.extend({
 
   initialize: function(options){
     _.bindAll(this); 
-    this.model = new HomepageEmergency();
+    this.model = new HomepageSubject();
     Backbone.Validation.bind(this);
     this.model.on('sync', this.onSync, this)
     if (options.thankyou)
@@ -16,10 +16,19 @@ return Backbone.View.extend({
   },
 
   events: {
-    'submit form' : 'submit'
+    'submit form' : 'submit',
+    "click a:not([href^='#'])": "pushState",
   },
 
   template: tpl,
+
+  pushState: function(e) {
+    e.preventDefault() 
+    var linkEl = $(e.currentTarget);
+    var href = linkEl.attr("href");
+    var router = new Backbone.Router();
+    router.navigate(href.substr(1), true)
+  },
 
   render: function(){
     $(this.el).html(this.template);
@@ -37,7 +46,7 @@ return Backbone.View.extend({
   onSync: function(model){
     new ThankyouView({model: model})
     //var router = new Backbone.Router();
-    //router.navigate('emergencies', {trigger: true}) 
+    //router.navigate('subjects', {trigger: true}) 
     this.render()
   }
 

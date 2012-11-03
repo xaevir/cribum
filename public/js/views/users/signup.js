@@ -1,6 +1,6 @@
 define(function(require) {
 
-var tpl = require('text!templates/users/signup.html')
+var tpl = require('text!templates/users/signup.mustache')
   , AlertView = require('views/site/alert').alert         
   , AlertContainedView = require('views/site/alert').contained         
 
@@ -8,9 +8,12 @@ var signup = {}
 
 signup.signup = Backbone.View.extend({
 
+  template: Hogan.compile(tpl),
+
   initialize: function(options){
     _.bindAll(this); 
     this.user = options.user 
+    this.type = options.type
     Backbone.Validation.bind(this);
   },
 
@@ -19,7 +22,9 @@ signup.signup = Backbone.View.extend({
   },
 
   render: function(){
-    $(this.el).html(tpl);
+    var header = (this.type === 'maintenance-tracking') ? 'for maintenance request tracking' : "" 
+    var template = this.template.render({header: header})
+    $(this.el).html(template);
     return this; 
   },
 

@@ -10,14 +10,14 @@ define(function(require) {
 
 var NewUser = (node) ? require('./newUser') : require('models/newUser')
 
-var Emergency = NewUser.extend({
+return NewUser.extend({
 
   idAttribute: "_id",
 
-  url: '/emergencies-home',
+  url: '/subjects-home',
 
   defaults: {
-    label: 'emergency' 
+    //label: 'subject' 
   },
 
   validation: {
@@ -36,7 +36,5 @@ var Emergency = NewUser.extend({
 //  }
 
 })
-
-  return Emergency
 
 })

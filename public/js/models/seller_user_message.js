@@ -2,7 +2,7 @@ define(function(require) {
 
 var NewUser = require('models/newUser')
 
-var Emergency = NewUser.extend({
+return NewUser.extend({
 
   idAttribute: "_id",
 
@@ -17,7 +17,5 @@ var Emergency = NewUser.extend({
   }
 
 })
-
-  return Emergency
 
 })
