@@ -1,14 +1,15 @@
 define(function(require) {
 
 var tpl = require('text!templates/home.html')
-  , HomepageSubject = require('models/homepage_subject')
+  , LandingPage = require('models/landingPage')
+  , AlertView = require('views/site/alert').alert         
   , ThankyouView = require('views/homepage_thankyou')      
 
 return Backbone.View.extend({
 
   initialize: function(options){
     _.bindAll(this); 
-    this.model = new HomepageSubject();
+    this.model = new LandingPage();
     Backbone.Validation.bind(this);
     this.model.on('sync', this.onSync, this)
     if (options.thankyou)
@@ -17,18 +18,10 @@ return Backbone.View.extend({
 
   events: {
     'submit form' : 'submit',
-    "click a:not([href^='#'])": "pushState",
   },
 
   template: tpl,
 
-  pushState: function(e) {
-    e.preventDefault() 
-    var linkEl = $(e.currentTarget);
-    var href = linkEl.attr("href");
-    var router = new Backbone.Router();
-    router.navigate(href.substr(1), true)
-  },
 
   render: function(){
     $(this.el).html(this.template);
@@ -38,15 +31,11 @@ return Backbone.View.extend({
   submit: function(e) {
     e.preventDefault()
     var params = this.$('form').serializeObject();
-    var result = this.model.set(params)
-    if (result !== false)
-      this.model.save({}, {silent: true})  // dont validate on return from server
+    var result = this.model.save(params)
   },
 
   onSync: function(model){
-    new ThankyouView({model: model})
-    //var router = new Backbone.Router();
-    //router.navigate('subjects', {trigger: true}) 
+    new ThankyouView()
     this.render()
   }
 

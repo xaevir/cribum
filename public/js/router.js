@@ -48,8 +48,8 @@ var AppRouter = Backbone.Router.extend({
   initialize: function() {
     _.bindAll(this); 
     this.user = new User(window.user) 
-    this.on('all', this.setupNav)
-    this.on('all', this.highlight)
+    //this.on('all', this.setupNav)
+    //this.on('all', this.highlight)
     window.events = _.clone(Backbone.Events)
     window.dispatcher.on('session:logout', this.logout, this)
     this.router = new Backbone.Router()

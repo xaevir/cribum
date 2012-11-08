@@ -16,10 +16,6 @@ return NewUser.extend({
 
   url: '/subjects-home',
 
-  defaults: {
-    //label: 'subject' 
-  },
-
   validation: {
     body:            {required: true},
     twitterOrEmail:  {required: true},

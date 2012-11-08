@@ -103,19 +103,19 @@ app.use(function(err, req, res, next) {
 
 app.configure('production', function(){
   app.set('port', process.env.PORT || 8030);
-  db = mongo.db("localhost/petes?auto_reconnect=true", {safe: true, strict: false}
+  db = mongo.db("localhost/cribum?auto_reconnect=true", {safe: true, strict: false}
   )
 })
 
 app.configure('staging', function(){
   app.set('port', process.env.PORT || 8031);
-  db = mongo.db("localhost/dev_petes?auto_reconnect=true", {safe: true, strict: false})
+  db = mongo.db("localhost/dev_cribum?auto_reconnect=true", {safe: true, strict: false})
 })
 
 app.configure('development', function(){
   app.use(express.errorHandler());
   app.set('port', process.env.PORT || 8032);
-  db = mongo.db("localhost/dev_petes?auto_reconnect=true", {safe: true, strict: false})
+  db = mongo.db("localhost/dev_cribum?auto_reconnect=true", {safe: true, strict: false})
 
 });
 
@@ -124,6 +124,7 @@ require ('./routes');
 db.bind('messages')
 db.bind('subjects')
 db.bind('users')
+db.bind('signups')
 
 function loadUser(req, res, next) {
   var user = req.session.user;
@@ -203,6 +204,20 @@ app.get('/*', function(req, res, next) {
   }
   else 
     next()
+})
+
+
+app.post('/landing', function(req, res, next) {
+  email(
+    {
+      subject: 'New Signup!', 
+      html: '<p>email: '+req.body.email+'</p>'
+    })
+  db.signups.insert({email: req.body.email}, function(err, email) {
+    if (err)
+      return next(new DatabaseError(err))
+    res.send(req.body)
+  })
 })
 
 

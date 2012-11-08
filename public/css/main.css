@@ -4570,6 +4570,7 @@ li {
 #home #banner {
   background-color: #a4def9;
   height: 300px;
+  height: 165px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -4578,18 +4579,12 @@ li {
 }
 #home #banner h1 {
   color: #fff;
-  font-size: 40px;
-  font-weight: normal;
+  font-size: 28px;
   line-height: 1.25;
 }
 .home {
   width: 940px;
   margin: 0 auto;
-}
-.home .logo {
-  margin: 0 auto;
-  display: block;
-  margin-top: 10px;
 }
 .home h1 {
   margin: 15px 0 25px 0;
@@ -4598,139 +4593,37 @@ li {
   padding: 0 15px;
   text-align: center;
 }
-.home h2 {
-  margin-bottom: 20px;
+.home #howItWorks h2 {
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-.home .how-it-works p {
-  font-size: 20px;
-}
-.home .examples {
-  width: 420px;
-  margin-left: 0;
-  float: left;
-  padding-top: 0;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
-  behavior: url(/js/libs/PIE.htc);
-  text-align: center;
-  *zoom: 1;
-  background-color: #9fdb1e;
-  padding: 40px;
-  padding-top: 0;
-  width: 360px;
-  color: #fff;
-}
-.home .examples:before,
-.home .examples:after {
-  display: table;
-  content: "";
-}
-.home .examples:after {
-  clear: both;
-}
-.home .examples h2 {
-  text-align: center;
-}
-.home .examples ul {
-  list-style: none;
-  *zoom: 1;
-  margin: 0;
-}
-.home .examples ul:before,
-.home .examples ul:after {
-  display: table;
-  content: "";
-}
-.home .examples ul:after {
-  clear: both;
-}
-.home .examples li {
-  border-bottom: 3px dashed #eee;
-  background: url(/img/check_mark.png) no-repeat center right;
-  font-size: 20px;
-  padding-bottom: 30px;
-  padding-top: 30px;
-  padding-right: 40px;
-  clear: both;
-  *zoom: 1;
-}
-.home .examples li:before,
-.home .examples li:after {
-  display: table;
-  content: "";
-}
-.home .examples li:after {
-  clear: both;
-}
-.home .examples li:last-child {
-  border-bottom: none;
-}
-.home .examples li:first-child {
-  padding-top: 0;
-}
-.home .examples li b {
-  margin-right: 8px;
-  position: relative;
-  display: block;
-  float: left;
-}
-.home .examples li span {
-  width: 338px;
-  float: left;
-}
-.home .more-examples {
-  clear: both;
-  margin-top: 20px;
-}
-.home .more-examples ul {
+.home #howItWorks ul {
   list-style: none;
 }
-.home .more-examples li {
-  font-size: 22px;
-  padding: 10px;
-  margin-bottom: 20px;
-  clear: both;
-  *zoom: 1;
+.home #howItWorks li {
+  float: left;
+  width: 33%;
 }
-.home .more-examples li:before,
-.home .more-examples li:after {
-  display: table;
-  content: "";
+.home #howItWorks p {
+  font-size: 18px;
+  padding-left: 18px;
 }
-.home .more-examples li:after {
-  clear: both;
-}
-.home .home-form {
-  float: right;
+.home form {
   margin: 0 auto;
   text-align: center;
-  background: #ffb901;
+  background: #FFB901;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
   behavior: url(/js/libs/PIE.htc);
-  padding: 40px;
-  padding-top: 0;
+  padding: 20px 40px;
   width: 360px;
 }
-.home .home-form h2 {
-  text-align: center;
+.home form label {
+  font-size: 16px;
   color: #fff;
-}
-.home .home-form label {
-  font-size: 14px;
-  color: #fff;
-}
-.home .home-form textarea {
-  height: 95px;
-  display: block;
-  width: 100%;
-  min-height: 28px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
+  font-weight: bold;
 }
 #home.electronic-repair .how-it-works li {
   font-size: 18px;
@@ -5117,9 +5010,6 @@ footer .details {
   }
 }
 */
-form .btn {
-  display: block;
-}
 form span.error {
   color: #b94a48;
   display: block;
@@ -6122,8 +6012,11 @@ table.setup td.editing .edit {
 }
 #homepage-thanks .content {
   width: 600px;
-  background: #fff;
+  background: #333;
   border: 1px solid #000;
+  color: #fff;
+  padding: 40px;
+  font-size: 18px;
 }
 #homepage-thanks p {
   font-size: 16px;
