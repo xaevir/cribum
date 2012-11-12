@@ -4569,18 +4569,16 @@ li {
 }
 #home #banner {
   background-color: #a4def9;
-  height: 300px;
-  height: 165px;
   margin-bottom: 20px;
-  text-align: center;
 }
 #home #banner .container {
   padding-top: 20px;
 }
-#home #banner h1 {
-  color: #fff;
+#home #banner p {
   font-size: 28px;
+  font-weight: normal;
   line-height: 1.25;
+  font-family: 'Cedarville Cursive', cursive;
 }
 .home {
   width: 940px;
@@ -4593,37 +4591,48 @@ li {
   padding: 0 15px;
   text-align: center;
 }
-.home #howItWorks h2 {
-  font-size: 28px;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.home #howItWorks ul {
-  list-style: none;
-}
-.home #howItWorks li {
-  float: left;
-  width: 33%;
-}
-.home #howItWorks p {
-  font-size: 18px;
-  padding-left: 18px;
-}
-.home form {
-  margin: 0 auto;
+.home h2 {
+  font-size: 32px;
+  font-weight: normal;
+  color: #00699E;
   text-align: center;
+}
+.home .question p {
+  font-size: 14px;
+  margin: 0 auto;
+}
+.home .answer {
   background: #FFB901;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
   behavior: url(/js/libs/PIE.htc);
-  padding: 20px 40px;
-  width: 360px;
 }
-.home form label {
+.home .answer h2 {
+  color: #fff;
+}
+.home .answer form {
+  padding: 0 20px;
+}
+.home .answer form label {
+  display: inline-block;
+  clear: both;
   font-size: 16px;
   color: #fff;
   font-weight: bold;
+}
+.home .answer form button {
+  display: block;
+}
+.home .answer form textarea {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 90px;
 }
 #home.electronic-repair .how-it-works li {
   font-size: 18px;
@@ -4892,8 +4901,8 @@ li {
   text-shadow: none;
   color: transparent;
   background-color: transparent;
-  width: 123px;
-  height: 26px;
+  width: 162px;
+  height: 27px;
   margin: 0 auto;
   margin-top: 6px;
   margin-right: 20px;
@@ -5013,8 +5022,6 @@ footer .details {
 form span.error {
   color: #b94a48;
   display: block;
-  margin-top: -10px;
-  margin-bottom: 10px;
 }
 .loading {
   background: #eeeeee url(/img/spinner.gif) 5px 50% no-repeat;
@@ -6015,11 +6022,22 @@ table.setup td.editing .edit {
   background: #333;
   border: 1px solid #000;
   color: #fff;
-  padding: 40px;
   font-size: 18px;
 }
-#homepage-thanks p {
-  font-size: 16px;
+#homepage-thanks .content .inner {
+  padding: 40px;
+  *zoom: 1;
+}
+#homepage-thanks .content .inner:before,
+#homepage-thanks .content .inner:after {
+  display: table;
+  content: "";
+}
+#homepage-thanks .content .inner:after {
+  clear: both;
+}
+#homepage-thanks .content p {
+  font-size: 20px;
 }
 #homepage-thanks #bomb {
   background: url(/img/bomb.svg) no-repeat center -55px;

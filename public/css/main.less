@@ -205,18 +205,18 @@ li {
   #banner {
     background-color: #a4def9; 
     //background-color: #0CF; 
-    height: 300px;
-    height: 165px;
+    //height: 300px;
+    //height: 165px;
     margin-bottom: 20px;
-    text-align: center;
+    //text-align: center;
     .container {
       padding-top: 20px; 
     }
-    h1 {
-      color: #fff; 
+    p {
       font-size: 28px;
-      //font-weight: normal;
+      font-weight: normal;
       line-height: 1.25;
+      font-family: 'Cedarville Cursive', cursive;
     }
   }
 }
@@ -231,35 +231,43 @@ li {
     padding: 0 15px;
     text-align: center;
   }
-  #howItWorks {
-    h2 {
-      font-size: 28px;    
-      margin-top: 0; 
-      margin-bottom: 0;
-    } 
-    ul {
-      list-style: none;
-    }
-    li {
-      float: left;
-      width: 33%;
-    }
-    p {
-      font-size: 18px; 
-      padding-left: 18px;
-    }
-  } 
-  form {
-    margin: 0 auto;
+  h2 {
+    font-size: 32px;    
+    //font-family: 'Cedarville Cursive', cursive;
+    font-weight: normal;
+    color: #00699E;  
     text-align: center;
+  } 
+  .question {
+    p {
+      font-size: 14px;       
+      margin: 0 auto;
+    }
+  }
+  .answer {
     background: #FFB901;
     .border-radius-for-pie(7px);
-    padding: 20px 40px;
-    width: 360px;
-    label {
-      font-size: 16px;
-      color: #fff;
-      font-weight: bold;
+    h2 {
+      color: #fff;    
+    }
+    form {
+      padding: 0 20px;
+      //margin: 0 auto;
+      //text-align: center;
+      label {
+        display: inline-block;
+        clear: both;
+        font-size: 16px;
+        color: #fff;
+        font-weight: bold;
+      }
+      button {
+        display: block; 
+      }
+      textarea {
+        .input-block-level();
+        height: 90px;
+      }
     }
   }
 }
@@ -517,8 +525,8 @@ li {
 
 #main-nav .brand {
   .ir();
-  width: 123px;
-  height: 26px;
+  width: 162px;
+  height: 27px;
   margin: 0 auto;
   //margin-top: -6px;
   margin-top: 6px;
@@ -623,8 +631,8 @@ form {
   span.error {
     color: @errorText;
     display: block;
-    margin-top: -10px;
-    margin-bottom: 10px;
+    //margin-top: -10px;
+    //margin-bottom: 10px;
   }
 }
 
@@ -1217,11 +1225,14 @@ table.setup {
     background: #333;
     border: 1px solid #000;
     color: #fff;
-    padding: 40px;
     font-size: 18px;
-  }
-  p {
-    font-size: 16px;
+    .inner {
+      padding: 40px;
+      .clearfix(); 
+    }
+    p {
+      font-size: 20px;
+    }
   }
   #bomb {
     background: url(/img/bomb.svg) no-repeat center -55px;

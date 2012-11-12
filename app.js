@@ -124,7 +124,7 @@ require ('./routes');
 db.bind('messages')
 db.bind('subjects')
 db.bind('users')
-db.bind('signups')
+db.bind('answers')
 
 function loadUser(req, res, next) {
   var user = req.session.user;
@@ -208,12 +208,16 @@ app.get('/*', function(req, res, next) {
 
 
 app.post('/landing', function(req, res, next) {
+  var msg  = '<p>email: '+req.body.email+'</p>'
+      msg += '<p>name: '+req.body.name+'</p>'
+      msg += '<p>answer: '+req.body.answer+'</p>'
+
   email(
     {
-      subject: 'New Signup!', 
-      html: '<p>email: '+req.body.email+'</p>'
+      subject: 'New Answer!', 
+      html: msg 
     })
-  db.signups.insert({email: req.body.email}, function(err, email) {
+  db.answers.insert(req.body, function(err, email) {
     if (err)
       return next(new DatabaseError(err))
     res.send(req.body)

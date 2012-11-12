@@ -1,14 +1,7 @@
 define(function(require) {
 
 //var TimerView = require('views/timer')
-//  , tpl = require('text!templates/homepage_thankyou.html')
-
-var tpl  = '<div class="content">'
-    tpl += '<a class="close" href="#">×</a>'
-    tpl += 'Thank you for signing up! We will get in touch with you as soon as we '
-    tpl += 'have updates on our launch day. We are really excited and cannot wait '
-    tpl += 'to show you what we have been working on!'
-    tpl += '</div>'
+var tpl = require('text!templates/homepage_thankyou.html')
 
 return Backbone.View.extend({
 

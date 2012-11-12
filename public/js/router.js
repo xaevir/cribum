@@ -48,7 +48,7 @@ var AppRouter = Backbone.Router.extend({
   initialize: function() {
     _.bindAll(this); 
     this.user = new User(window.user) 
-    //this.on('all', this.setupNav)
+    this.on('all', this.setupNav)
     //this.on('all', this.highlight)
     window.events = _.clone(Backbone.Events)
     window.dispatcher.on('session:logout', this.logout, this)
@@ -96,8 +96,8 @@ AppRouter.prototype.notFound = function(){
 
 AppRouter.prototype.setupNav = function(route, section){
   var isHome = false
-  if (route === 'route:home' || route === 'route:electronic_repair')
-    isHome = true
+  //if (route === 'route:home' || route === 'route:electronic_repair')
+    //isHome = true
   new MainMenu({ el: $("#main-menu"), user: this.user, isHome: isHome}).render()
   new UserMenu({ el: $("#user-menu"), model: this.user}).render()
 }

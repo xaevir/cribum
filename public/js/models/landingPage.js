@@ -20,6 +20,12 @@ return Backbone.Model.extend({
       required: true,
       pattern: 'email',
     },
+    name: {
+      required: true,
+    },
+    answer: {
+      required: true,
+    },
   },
 
 })

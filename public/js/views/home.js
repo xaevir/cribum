@@ -11,9 +11,8 @@ return Backbone.View.extend({
     _.bindAll(this); 
     this.model = new LandingPage();
     Backbone.Validation.bind(this);
-    this.model.on('sync', this.onSync, this)
-    if (options.thankyou)
-      this.onSync()
+    this.model.on('sync', this.notice, this) 
+    this.model.on('sync', this.reset, this) 
   },
 
   events: {
@@ -21,7 +20,6 @@ return Backbone.View.extend({
   },
 
   template: tpl,
-
 
   render: function(){
     $(this.el).html(this.template);
@@ -34,10 +32,15 @@ return Backbone.View.extend({
     var result = this.model.save(params)
   },
 
-  onSync: function(model){
+  notice: function(model){
     new ThankyouView()
+  },
+
+  reset: function() {
     this.render()
-  }
+    this.model.clear({silent: true})
+  },
+  
 
 });
 
