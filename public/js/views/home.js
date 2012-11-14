@@ -3,7 +3,7 @@ define(function(require) {
 var tpl = require('text!templates/home.html')
   , LandingPage = require('models/landingPage')
   , AlertView = require('views/site/alert').alert         
-  , ThankyouView = require('views/homepage_thankyou')      
+  , ModalView = require('views/modal')      
 
 return Backbone.View.extend({
 
@@ -33,7 +33,10 @@ return Backbone.View.extend({
   },
 
   notice: function(model){
-    new ThankyouView()
+    var msg  = '<p>Thank you very much for your help. Your kindness is greatly apprecited.'
+        msg += ' I will email you back and let you know how it goes.</p>'
+        msg += '<p style="float: right">- Bobby Chambers</p>'
+    new ModalView(msg)
   },
 
   reset: function() {

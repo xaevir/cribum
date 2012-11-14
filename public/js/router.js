@@ -31,6 +31,8 @@ var ModelExtended = require('models/modelExtended')
   , BubblesView = require('views/bubbles')         
   , InstructionsView = require('views/site/alert').instructions
   , AlertContainedView = require('views/site/alert').contained
+  , LinkedinView = require('views/linkedin')
+  , ContactView = require('views/contact')
 
 var rp = Backbone.Router.prototype
 var _route = rp.route;
@@ -49,7 +51,7 @@ var AppRouter = Backbone.Router.extend({
     _.bindAll(this); 
     this.user = new User(window.user) 
     this.on('all', this.setupNav)
-    //this.on('all', this.highlight)
+    this.on('all', this.highlight)
     window.events = _.clone(Backbone.Events)
     window.dispatcher.on('session:logout', this.logout, this)
     this.router = new Backbone.Router()
@@ -69,6 +71,8 @@ var AppRouter = Backbone.Router.extend({
       'signup':                                 'signup'
     , 'signup/:type':                           'signup'
     , 'login':                                  'login'
+    , 'contact':                                'contact'
+    , 'questions':                              'linkedin'
     , 'how-it-works':                           'how_it_works'
     , 'profile/:username':                      'profile'
     , 'profile/:username/edit':                 'profile_edit'
@@ -140,6 +144,22 @@ AppRouter.prototype.spider = function(){
   document.title = 'Spider'
   _gaq.push(['_trackPageview', '/spider'])
 }
+
+AppRouter.prototype.linkedin = function() {
+  ///$('body').attr('id','home')
+  var view = new LinkedinView()
+  $('#app').html(view.render().el)
+  document.title = 'Cribum'
+  _gaq.push(['_trackPageview', '/linkedin'])
+}
+
+AppRouter.prototype.contact = function(){
+  var view = new ContactView()
+  $('#app').html(view.render().el)
+  document.title = 'Contact'
+  _gaq.push(['_trackPageview', '/contact'])
+}
+
 
 AppRouter.prototype.subjects  = function(e) {
   var self = this
@@ -244,7 +264,7 @@ AppRouter.prototype.seller = function(id, slug) {
     var height = ul.scrollHeight
     ul.scrollTop = height
     _gaq.push(['_trackPageview', '/lead/'+ res.subject.body])
-    document.title = 'Ruby Rate';
+    document.title = 'Cribum';
   }, this));
 }
 
@@ -279,7 +299,7 @@ AppRouter.prototype.lead = function(id, slug) {
     var height = ul.scrollHeight
     ul.scrollTop = height
     _gaq.push(['_trackPageview', '/lead/'+ res.subject.body])
-    document.title = 'Ruby Rate';
+    document.title = 'Cribum';
    
   }, this));
 }
@@ -311,7 +331,7 @@ AppRouter.prototype.helper = function(id) {
     $('#app').append(tpl)
     
     _gaq.push(['_trackPageview', '/helper/'+ res.subject.body])
-    document.title = 'Ruby Rate - Helper';
+    document.title = 'Cribum - Helper';
     var views = []
     _.each(res.conversations, function(convo){
       var chatCompositeView = new ChatCompositeView({user: this.user, unread: convo.value.unread})
@@ -391,7 +411,7 @@ AppRouter.prototype.profile = function(userSlug){
     var view = new ProfileView(user)
     $('#app').html(view.render(user).el)
     _gaq.push(['_trackPageview', '/profile/'+ user.slug])
-    document.title = user.username + ' on Rubyrate'
+    document.title = user.username + ' on Cribum'
   })
 }
 
@@ -406,7 +426,7 @@ AppRouter.prototype.profile_edit = function(username){
     var view = new ProfileEditView({user: self.user})
     $('#app').html(view.render(user).el)
     _gaq.push(['_trackPageview', '/profile/'+ user.slug+'/edit'])
-    document.title = 'Editing '+user.username+ ' on Rubyrate'
+    document.title = 'Editing '+user.username+ ' on Cribum'
   })
 }
 

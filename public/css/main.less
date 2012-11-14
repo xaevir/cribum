@@ -197,20 +197,68 @@ li {
 
 }
 
+#linkedin {
+  #letter {
+    .clearfix();
+    margin-bottom: 20px;
+    p {
+      font-size: 28px;
+      font-weight: normal;
+      line-height: 1.25;
+      font-family: 'Cedarville Cursive', cursive;
+    }
+  }
+  #dollarValue {
+    color: green; 
+  }
+  form {
+    background: #FFB901;
+    .border-radius-for-pie(7px);
+    width: 360px;
+    margin: 0 auto;
+    padding: 20px;
+    //text-align: center;
+    #signup {
+      color: #fff; 
+      font-size: 16px;
+      text-align: center;
+    }
+    label {
+      color: #fff; 
+      width: 40px;
+    }
+    .form-horizontal .controls {
+      margin-left: 45px;
+    }
+    textarea {
+      .input-block-level();
+      height: 90px;
+    }
+
+  }
+  .question {
+    p {
+      font-size: 14px;       
+      //margin: 0 auto;
+    }
+  }
+
+}
+
 #home  {
   #app {
     width: 100%;  
     margin-top: -15px;
   }
   #banner {
-    background-color: #a4def9; 
+    //background-color: #a4def9; 
     //background-color: #0CF; 
     //height: 300px;
     //height: 165px;
-    margin-bottom: 20px;
+    //margin-bottom: 20px;
     //text-align: center;
     .container {
-      padding-top: 20px; 
+      padding: 20px 0; 
     }
     p {
       font-size: 28px;
@@ -230,20 +278,47 @@ li {
     font-size: 28px;
     padding: 0 15px;
     text-align: center;
-  }
-  h2 {
-    font-size: 32px;    
-    //font-family: 'Cedarville Cursive', cursive;
     font-weight: normal;
-    color: #00699E;  
+  }
+  form {
+    background: #FFB901;
+    .border-radius-for-pie(7px);
+    width: 360px;
+    margin: 0 auto;
+    padding: 20px;
     text-align: center;
-  } 
+    #signup {
+      color: #fff; 
+      font-size: 16px;
+      text-align: center;
+    }
+    label {
+      color: #fff; 
+    }
+  }
+
   .question {
     p {
       font-size: 14px;       
       margin: 0 auto;
     }
   }
+  #howItWorks {
+    h2 {
+      font-size: 28px;    
+    } 
+    ul {
+      list-style: none;
+    }
+    li {
+      float: left;
+      width: 33%;
+    }
+    p {
+      font-size: 18px; 
+      padding-left: 18px;
+    }
+  } 
   .answer {
     background: #FFB901;
     .border-radius-for-pie(7px);
@@ -468,6 +543,7 @@ li {
   //background: #fff;
   background: #333; 
   background: #00699e;
+  background: #A4DEF9;
   margin-bottom: 15px;
   //background: rgba(49, 201, 247, 0.1);
   //border: 1px solid #31C9F7;
@@ -523,19 +599,64 @@ li {
   }
 }
 
-#main-nav .brand {
-  .ir();
-  width: 162px;
-  height: 27px;
-  margin: 0 auto;
-  //margin-top: -6px;
-  margin-top: 6px;
-  margin-right: 20px;
-  padding: 0 !important;
-  display: block;
+#main-menu {
+  .clearfix();
   float: left;
-  background: url(/img/logo.png) no-repeat top left;
+  list-style: none;
+  margin-top: 15px;
+  .brand {
+    .ir();
+    width: 314px;
+    height: 42px;
+    margin: 0 auto;
+    //margin-top: -6px;
+    margin-top: 3x;
+    margin-right: 20px;
+    padding: 0 !important;
+    display: block;
+    float: left;
+    background: url(/img/logo.png) no-repeat top left;
+  }
 }
+
+#header-hr {
+  margin: 0 0 20px 0;
+}
+
+/* Customize the navbar links to be fill the entire space of the .navbar */
+.navbar {
+  float: right;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.navbar .navbar-inner {
+  padding: 0;
+  width: 475px;
+}
+.navbar .nav {
+  margin: 0;
+}
+.navbar .nav li {
+  display: table-cell;
+  width: 1%;
+  float: none;
+}
+.navbar .nav li a {
+  font-weight: bold;
+  text-align: center;
+  border-left: 1px solid rgba(255,255,255,.75);
+  border-right: 1px solid rgba(0,0,0,.1);
+}
+.navbar .nav li:first-child a {
+  border-left: 0;
+  border-radius: 3px 0 0 3px;
+}
+.navbar .nav li:last-child a {
+  border-right: 0;
+  border-radius: 0 3px 3px 0;
+}
+
 
 footer {
   border-top: 1px solid #eee;
@@ -1218,7 +1339,7 @@ table.setup {
   }
 }
 
-#homepage-thanks {
+#myModal {
   #alert;
   .content {
     width: 600px; 
