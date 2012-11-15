@@ -1,7 +1,7 @@
 define(function(require) {
 
 var tpl = require('text!templates/home.html')
-  , LandingPage = require('models/landingPage')
+  , Home = require('models/home')
   , AlertView = require('views/site/alert').alert         
   , ModalView = require('views/modal')      
 
@@ -9,7 +9,7 @@ return Backbone.View.extend({
 
   initialize: function(options){
     _.bindAll(this); 
-    this.model = new LandingPage();
+    this.model = new Home();
     Backbone.Validation.bind(this);
     this.model.on('sync', this.notice, this) 
     this.model.on('sync', this.reset, this) 
@@ -33,9 +33,9 @@ return Backbone.View.extend({
   },
 
   notice: function(model){
-    var msg  = '<p>Thank you very much for your help. Your kindness is greatly apprecited.'
-        msg += ' I will email you back and let you know how it goes.</p>'
-        msg += '<p style="float: right">- Bobby Chambers</p>'
+    var msg  = '<p>Thank you very much for signing up. I am excited about starting this site. '
+        msg += ' I will email you back as soon as possible.</p>'
+        msg += '<p style="float: right">- Bobby</p>'
     new ModalView(msg)
   },
 

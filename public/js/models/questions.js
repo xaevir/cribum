@@ -13,7 +13,7 @@ return Backbone.Model.extend({
 
   idAttribute: "_id",
 
-  url: '/landing',
+  url: '/answers',
 
   validation: {
     email: {

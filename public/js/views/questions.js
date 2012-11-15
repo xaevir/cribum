@@ -1,8 +1,7 @@
 define(function(require) {
 
-var tpl = require('text!templates/linkedin.mustache')
-  , Linkedin = require('models/linkedin')
-  , AlertView = require('views/site/alert').alert         
+var tpl = require('text!templates/questions.mustache')
+  , Linkedin = require('models/questions')
   , ModalView = require('views/modal')      
 
 return Backbone.View.extend({
@@ -33,7 +32,11 @@ return Backbone.View.extend({
   },
 
   notice: function(model){
-    new ModalView('<p>Thank you very much for your help. I will email you back as soon as the site is ready</p>') 
+    var msg  = '<p>Thank you very much for your answer. I am excited about '
+        msg += 'starting this site. I will email you back as soon as possible.</p>'
+        msg += '<p style="float: right">- Bobby</p>'
+
+    new ModalView(msg) 
   },
 
   reset: function() {

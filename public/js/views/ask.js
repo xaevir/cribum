@@ -1,12 +1,12 @@
 define(function(require) {
 
-var tpl = require('text!templates/contact.html')
-  , Contact = require('models/contact-page') 
+var tpl = require('text!templates/ask.html')
+  , Ask = require('models/ask') 
   , ModalView = require('views/modal')      
 
 return Backbone.View.extend({
 
-  className: 'contact',
+  className: 'ask',
 
   events: {
     'submit form' : 'submit',
@@ -14,7 +14,7 @@ return Backbone.View.extend({
 
   initialize: function(options){
     _.bindAll(this); 
-    this.model = new Contact()
+    this.model = new Ask()
     Backbone.Validation.bind(this)
     this.model.on('sync', this.notice, this) 
     this.model.on('sync', this.reset, this) 
@@ -32,11 +32,10 @@ return Backbone.View.extend({
   },
 
   notice: function(){
-    var msg  = '<p>Thank you very much for the message. I am excited about '
-        msg += 'starting this site. I will email you back as soon as possible.</p>'
+    var msg  = '<p>Thank you very much for your question. I am excited about starting this site. '
+        msg += ' I will email you back as soon as possible.</p>'
         msg += '<p style="float: right">- Bobby</p>'
-
-    new ModalView(msg) 
+    new ModalView(msg)
   },
 
   reset: function() {

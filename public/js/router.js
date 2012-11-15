@@ -31,8 +31,10 @@ var ModelExtended = require('models/modelExtended')
   , BubblesView = require('views/bubbles')         
   , InstructionsView = require('views/site/alert').instructions
   , AlertContainedView = require('views/site/alert').contained
-  , LinkedinView = require('views/linkedin')
+  , QuestionsView = require('views/questions')
   , ContactView = require('views/contact')
+  , AskView = require('views/ask')
+  , aboutTpl = require('text!templates/about.html')
 
 var rp = Backbone.Router.prototype
 var _route = rp.route;
@@ -72,7 +74,9 @@ var AppRouter = Backbone.Router.extend({
     , 'signup/:type':                           'signup'
     , 'login':                                  'login'
     , 'contact':                                'contact'
-    , 'questions':                              'linkedin'
+    , 'about':                                  'about'
+    , 'ask':                                    'ask'
+    , 'questions':                              'questions'
     , 'how-it-works':                           'how_it_works'
     , 'profile/:username':                      'profile'
     , 'profile/:username/edit':                 'profile_edit'
@@ -145,12 +149,11 @@ AppRouter.prototype.spider = function(){
   _gaq.push(['_trackPageview', '/spider'])
 }
 
-AppRouter.prototype.linkedin = function() {
-  ///$('body').attr('id','home')
-  var view = new LinkedinView()
+AppRouter.prototype.questions = function() {
+  var view = new QuestionsView()
   $('#app').html(view.render().el)
-  document.title = 'Cribum'
-  _gaq.push(['_trackPageview', '/linkedin'])
+  document.title = 'Questions'
+  _gaq.push(['_trackPageview', '/questions'])
 }
 
 AppRouter.prototype.contact = function(){
@@ -158,6 +161,19 @@ AppRouter.prototype.contact = function(){
   $('#app').html(view.render().el)
   document.title = 'Contact'
   _gaq.push(['_trackPageview', '/contact'])
+}
+
+AppRouter.prototype.ask = function(){
+  var view = new AskView()
+  $('#app').html(view.render().el)
+  document.title = 'Ask'
+  _gaq.push(['_trackPageview', '/ask'])
+}
+
+AppRouter.prototype.about = function(){
+  $('#app').html(aboutTpl)
+  document.title = 'About'
+  _gaq.push(['_trackPageview', '/About'])
 }
 
 

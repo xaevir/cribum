@@ -6,7 +6,7 @@ define(function(require) {
 var tpl  = '<div class="content">'
     tpl += '  <a class="close" href="#">&times;</a>'
     tpl += '  <div class="inner">'
-    tpl += '    {{body}}'
+    tpl += '    {{{body}}}'
     tpl += '  </div>' 
     tpl += '</div>'
 

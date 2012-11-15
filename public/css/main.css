@@ -4987,81 +4987,68 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
-@font-face {
-  font-family: 'Calluna';
-  src: url("/fonts/Calluna/regular/Calluna-Regular.eot");
-  src: url("/fonts/Calluna/regular/Calluna-Regular.eot?#iefix") format('embedded-opentype'), url("/fonts/Calluna/regular/Calluna-Regular.woff") format('woff'), url("/fonts/Calluna/regular/Calluna-Regular.ttf") format('truetype'), url("/fonts/Calluna/regular/Calluna-Regular.svg#") format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'CallunaBold';
-  src: url("/fonts/Calluna/bold/Calluna-Bold.eot");
-  src: url("/fonts/Calluna/bold/Calluna-Bold.eot?#iefix") format('embedded-opentype'), url("/fonts/Calluna/bold/Calluna-Bold.woff") format('woff'), url("/fonts/Calluna/bold/Calluna-Bold.ttf") format('truetype'), url("/fonts/Calluna/bold/Calluna-Bold.svg#") format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
 /*
 @font-face {
-    font-family: 'LinuxLibertine';
-    src: url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.eot');
-    src: url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.eot?iefix') format('eot'),
-         url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.woff') format('woff'),
-         url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.ttf') format('truetype'),
-         url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.svg#webfontIgdJI780') format('svg');
+    font-family: 'Calluna';
+    @folder: 'Calluna/regular';
+    @name: 'Calluna-Regular';
+    src: url("@{base-url}/@{folder}/@{name}.eot");
+    src: url("@{base-url}/@{folder}/@{name}.eot?#iefix") format('embedded-opentype'),
+         url("@{base-url}/@{folder}/@{name}.woff") format('woff'),
+         url("@{base-url}/@{folder}/@{name}.ttf") format('truetype'),
+         url("@{base-url}/@{folder}/@{name}.svg#") format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
-    font-family: 'LinuxLibertineItalic';
-    src: url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.eot');
-    src: url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.eot?iefix') format('eot'),
-         url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.woff') format('woff'),
-         url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.ttf') format('truetype'),
-         url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.svg#webfontk0WmrDaO') format('svg');
+    font-family: 'CallunaBold';
+    @folder: 'Calluna/bold';
+    @name: 'Calluna-Bold';
+    src: url("@{base-url}/@{folder}/@{name}.eot");
+    src: url("@{base-url}/@{folder}/@{name}.eot?#iefix") format('embedded-opentype'),
+         url("@{base-url}/@{folder}/@{name}.woff") format('woff'),
+         url("@{base-url}/@{folder}/@{name}.ttf") format('truetype'),
+         url("@{base-url}/@{folder}/@{name}.svg#") format('svg');
     font-weight: normal;
     font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'LinuxLibertineBold';
-    src: url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.eot');
-    src: url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.eot?iefix') format('eot'),
-         url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.woff') format('woff'),
-         url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.ttf') format('truetype'),
-         url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.svg#webfontvwcjcclS') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'DroidSans';
-    src: url('/fonts/Droid-Sans/DroidSans-webfont.eot');
-    src: url('/fonts/Droid-Sans/DroidSans-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/Droid-Sans/DroidSans-webfont.woff') format('woff'),
-         url('/fonts/Droid-Sans/DroidSans-webfont.ttf') format('truetype'),
-         url('/fonts/Droid-Sans/DroidSans-webfont.svg#DroidSansRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'DroidSansBold';
-    src: url('/fonts/Droid-Sans/DroidSans-Bold-webfont.eot');
-    src: url('/fonts/Droid-Sans/DroidSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/Droid-Sans/DroidSans-Bold-webfont.woff') format('woff'),
-         url('/fonts/Droid-Sans/DroidSans-Bold-webfont.ttf') format('truetype'),
-         url('/fonts/Droid-Sans/DroidSans-Bold-webfont.svg#DroidSansBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
 }
 */
+@font-face {
+  font-family: 'LinuxLibertine';
+  src: url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.eot');
+  src: url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.eot?iefix') format('eot'), url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.woff') format('woff'), url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.ttf') format('truetype'), url('/fonts/Linux-Libertine/linlibertine_re-4.7.5ro-webfont.svg#webfontIgdJI780') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LinuxLibertineItalic';
+  src: url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.eot');
+  src: url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.eot?iefix') format('eot'), url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.woff') format('woff'), url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.ttf') format('truetype'), url('/fonts/Linux-Libertine/linlibertine_it-4.2.6ro-webfont.svg#webfontk0WmrDaO') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LinuxLibertineBold';
+  src: url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.eot');
+  src: url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.eot?iefix') format('eot'), url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.woff') format('woff'), url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.ttf') format('truetype'), url('/fonts/Linux-Libertine/linlibertine_bd-4.1.5ro-webfont.svg#webfontvwcjcclS') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DroidSans';
+  src: url('/fonts/Droid-Sans/DroidSans-webfont.eot');
+  src: url('/fonts/Droid-Sans/DroidSans-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/Droid-Sans/DroidSans-webfont.woff') format('woff'), url('/fonts/Droid-Sans/DroidSans-webfont.ttf') format('truetype'), url('/fonts/Droid-Sans/DroidSans-webfont.svg#DroidSansRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DroidSansBold';
+  src: url('/fonts/Droid-Sans/DroidSans-Bold-webfont.eot');
+  src: url('/fonts/Droid-Sans/DroidSans-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/Droid-Sans/DroidSans-Bold-webfont.woff') format('woff'), url('/fonts/Droid-Sans/DroidSans-Bold-webfont.ttf') format('truetype'), url('/fonts/Droid-Sans/DroidSans-Bold-webfont.svg#DroidSansBold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 [class^="icon-"] {
   background-image: url(/js/libs/bootstrap/img/glyphicons-halflings.png);
 }
@@ -5376,51 +5363,69 @@ li {
   z-index: 2;
   border-bottom: 17px solid rgba(0, 0, 0, 0);
 }
-#linkedin #letter {
+#letter {
   *zoom: 1;
+  padding: 10px 20px;
+  background: #eee;
   margin-bottom: 20px;
 }
-#linkedin #letter:before,
-#linkedin #letter:after {
+#letter:before,
+#letter:after {
   display: table;
   content: "";
   line-height: 0;
 }
-#linkedin #letter:after {
+#letter:after {
   clear: both;
 }
-#linkedin #letter p {
-  font-size: 28px;
+#letter p {
+  font-size: 20px;
   font-weight: normal;
   line-height: 1.25;
-  font-family: 'Cedarville Cursive', cursive;
+  font-family: 'LinuxLibertineItalic', Arial, sans-serif;
 }
-#linkedin #dollarValue {
+#ask .small-content {
+  width: 320px;
+}
+#ask textarea {
+  height: 100px;
+  width: 300px;
+}
+#questions .question #dollarValue {
   color: green;
 }
-#linkedin form {
+#questions .question p {
+  font-size: 18px;
+}
+#questions .answer {
   background: #FFB901;
+}
+#questions .answer h2 {
+  padding-left: 20px;
+  color: #fff;
+}
+#questions .answer form {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
   behavior: url(/js/libs/PIE.htc);
-  width: 360px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 0;
 }
-#linkedin form #signup {
+#questions .answer form #signup {
   color: #fff;
   font-size: 16px;
   text-align: center;
 }
-#linkedin form label {
+#questions .answer form label {
   color: #fff;
   width: 40px;
 }
-#linkedin form .form-horizontal .controls {
+#questions .answer form .form-horizontal .controls {
   margin-left: 45px;
 }
-#linkedin form textarea {
+#questions .answer form textarea {
   display: block;
   width: 100%;
   min-height: 30px;
@@ -5429,56 +5434,31 @@ li {
   box-sizing: border-box;
   height: 90px;
 }
-#linkedin .question p {
-  font-size: 14px;
-}
-#home #app {
-  width: 100%;
-  margin-top: -15px;
-}
-#home #banner .container {
-  padding: 20px 0;
-}
-#home #banner p {
-  font-size: 28px;
-  font-weight: normal;
-  line-height: 1.25;
-  font-family: 'Cedarville Cursive', cursive;
-}
-.home {
-  width: 940px;
-  margin: 0 auto;
-}
-.home h1 {
-  margin: 15px 0 25px 0;
-  padding: 0;
-  font-size: 28px;
-  padding: 0 15px;
-  text-align: center;
-  font-weight: normal;
-}
-.home form {
-  background: #FFB901;
+.home #signup {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
   behavior: url(/js/libs/PIE.htc);
+  padding: 10px;
   width: 360px;
   margin: 0 auto;
-  padding: 20px;
+  background: #FFB901;
+}
+.home #signup p {
+  font-size: 20px;
+  color: #fff;
   text-align: center;
 }
-.home form #signup {
-  color: #fff;
-  font-size: 16px;
+.home #signup form {
+  margin-bottom: 0;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  behavior: url(/js/libs/PIE.htc);
   text-align: center;
 }
-.home form label {
+.home #signup form label {
   color: #fff;
-}
-.home .question p {
-  font-size: 14px;
-  margin: 0 auto;
 }
 .home #howItWorks h2 {
   font-size: 28px;
@@ -5811,8 +5791,8 @@ li {
   text-shadow: none;
   color: transparent;
   background-color: transparent;
-  width: 314px;
-  height: 42px;
+  width: 119px;
+  height: 45px;
   margin: 0 auto;
   margin-top: 3x;
   margin-right: 20px;
@@ -6032,6 +6012,41 @@ img {
 }
 .contact textarea {
   height: 100px;
+}
+/* Custom container */
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+  margin: 60px 0;
+  text-align: center;
+}
+.jumbotron h1 {
+  font-size: 72px;
+  line-height: 1;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+.jumbotron p {
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 30px;
+  text-align: left;
+}
+/* Supporting marketing content */
+.marketing {
+  margin: 60px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
 }
 .hero-unit {
   background: none;

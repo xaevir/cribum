@@ -13,18 +13,12 @@ return Backbone.Model.extend({
 
   idAttribute: "_id",
 
-  url: '/landing',
+  url: '/home',
 
   validation: {
     email: {
       required: true,
       pattern: 'email',
-    },
-    name: {
-      required: true,
-    },
-    answer: {
-      required: true,
     },
   },
 
