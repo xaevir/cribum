@@ -5384,10 +5384,12 @@ li {
   line-height: 1.25;
   font-family: 'LinuxLibertineItalic', Arial, sans-serif;
 }
-#ask .small-content {
+#ask .small-content,
+#contact .small-content {
   width: 320px;
 }
-#ask textarea {
+#ask textarea,
+#contact textarea {
   height: 100px;
   width: 300px;
 }
@@ -5706,11 +5708,6 @@ li {
   margin-top: 25px;
   border-bottom: 1px solid #000;
 }
-#contact p {
-  font-family: 'Ovo', serif;
-  font-size: 18px;
-  font-weight: normal;
-}
 .ir {
   border: 0;
   font: 0/0 a;
@@ -5718,7 +5715,53 @@ li {
   color: transparent;
   background-color: transparent;
 }
-#main-nav {
+.hover {
+  color: #000;
+  background-color: #ccc;
+}
+#user-menu {
+  float: right;
+  width: 500px;
+  padding: 0;
+  margin: 15px 0 0 0;
+}
+#user-menu li {
+  display: inline;
+}
+#user-menu li a {
+  text-decoration: none;
+  display: inline-block;
+  float: left;
+  width: 124px;
+  background: #eee;
+  height: 45px;
+  text-align: center;
+  line-height: 300%;
+  border-right: 1px solid #fff;
+  color: #777;
+}
+#user-menu li a:hover {
+  color: #000;
+  background-color: #ccc;
+}
+#user-menu li a.last {
+  border-right: none;
+  -webkit-border-radius: 0 6px 6px 0;
+  -moz-border-radius: 0 6px 6px 0;
+  border-radius: 0 6px 6px 0;
+  behavior: url(/js/libs/PIE.htc);
+}
+#user-menu li a.first {
+  -webkit-border-radius: 6px 0 0 6px;
+  -moz-border-radius: 6px 0 0 6px;
+  border-radius: 6px 0 0 6px;
+  behavior: url(/js/libs/PIE.htc);
+}
+#user-menu li.active a {
+  color: #000;
+  background-color: #ccc;
+}
+#main-nav-old {
   *zoom: 1;
   background: #333;
   background: #00699e;
@@ -5726,47 +5769,47 @@ li {
   margin-bottom: 15px;
   height: 40px;
 }
-#main-nav:before,
-#main-nav:after {
+#main-nav-old:before,
+#main-nav-old:after {
   display: table;
   content: "";
   line-height: 0;
 }
-#main-nav:after {
+#main-nav-old:after {
   clear: both;
 }
-#main-nav #main-menu,
-#main-nav #user-menu {
+#main-nav-old #main-menu,
+#main-nav-old #user-menu {
   list-style: none;
   margin: 0;
   float: left;
 }
-#main-nav #main-menu > li,
-#main-nav #user-menu > li {
+#main-nav-old #main-menu > li,
+#main-nav-old #user-menu > li {
   float: left;
 }
-#main-nav #main-menu > li a,
-#main-nav #user-menu > li a {
+#main-nav-old #main-menu > li a,
+#main-nav-old #user-menu > li a {
   color: #333;
   color: #fff;
   font-weight: bold;
   padding: 10px;
   display: block;
 }
-#main-nav #main-menu .dropdown-menu li a,
-#main-nav #user-menu .dropdown-menu li a {
+#main-nav-old #main-menu .dropdown-menu li a,
+#main-nav-old #user-menu .dropdown-menu li a {
   color: #333;
 }
-#main-nav #user-menu {
+#main-nav-old #user-menu {
   float: right;
 }
-#main-nav .contextual-menu {
+#main-nav-old .contextual-menu {
   float: left;
   margin: 0;
   margin-top: 10px;
   list-style: none;
 }
-#main-nav .contextual-menu li {
+#main-nav-old .contextual-menu li {
   float: left;
   margin-left: 10px;
 }
@@ -5812,7 +5855,7 @@ li {
 }
 .navbar .navbar-inner {
   padding: 0;
-  width: 475px;
+  width: 500px;
 }
 .navbar .nav {
   margin: 0;
@@ -6009,9 +6052,6 @@ form span.error {
 }
 img {
   max-width: none !important;
-}
-.contact textarea {
-  height: 100px;
 }
 /* Custom container */
 .container-narrow {

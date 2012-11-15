@@ -486,10 +486,10 @@ AppRouter.prototype.highlight = function(route, section) {
   route = route.replace('route:', '/');
   if (route === '/home') route = '/' 
   var hrefString = "a[href='" + route + "']"
-  var el = $(hrefString, '.navbar');
+  var el = $(hrefString, '#user-menu');
   if (el.parent().hasClass('active')) return
   else {
-    $('.navbar li.active').removeClass('active');
+    $('#user-menu li.active').removeClass('active');
     var parent = el.parent(); 
     if (route== '/') return 
     parent.addClass('active');
