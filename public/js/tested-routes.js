@@ -7,7 +7,7 @@ Router.prototype.home = function(thankyou) {
   $('body').attr('id','home')
   var homeView = new HomeView({thankyou: thankyou})
   $('#app').html(homeView.render().el)
-  document.title = 'Ruby Rate'
+  document.title = 'Cribum Health'
   _gaq.push(['_trackPageview', '/home'])
 }
 
@@ -26,7 +26,7 @@ Router.prototype.electronic_repair = function(){
         else you might need to get the phone fixed')
   $('#body', view.el).attr('placeholder','For example - angroid global 2, broken screen')
   $('#app').html(view.el)
-  document.title = 'Ruby Rate - electronic repair'
+  document.title = 'Cribum - electronic repair'
   _gaq.push(['_trackPageview', '/electronic repair'])
 }
 
