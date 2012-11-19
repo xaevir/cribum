@@ -76,7 +76,7 @@ var AppRouter = Backbone.Router.extend({
     , 'contact':                                'contact'
     , 'about':                                  'about'
     , 'ask':                                    'ask'
-    , 'questions':                              'questions'
+    , 'questions':                              'home'
     , 'how-it-works':                           'how_it_works'
     , 'profile/:username':                      'profile'
     , 'profile/:username/edit':                 'profile_edit'

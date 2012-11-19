@@ -259,7 +259,7 @@ app.post('/answers', function(req, res, next) {
 
 app.post('/questions', function(req, res, next) {
   var msg  = '<p>email: '+req.body.email+'</p>'
-      msg += '<p>name: '+req.body.name+'</p>'
+      msg += '<p>price: '+req.body.price+'</p>'
       msg += '<p>question: '+req.body.question+'</p>'
 
   email(
@@ -267,7 +267,7 @@ app.post('/questions', function(req, res, next) {
       subject: 'New Question!', 
       html: msg 
     })
-  db.answers.insert(req.body, function(err, email) {
+  db.questions.insert(req.body, function(err, email) {
     if (err)
       return next(new DatabaseError(err))
     res.send(req.body)
