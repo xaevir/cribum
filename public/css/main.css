@@ -5067,11 +5067,45 @@ body {
   background: #f7f7f7;
   background: #ccc;
   background: #fff;
-  background: url(/img/rocket.jpg) no-repeat;
-  background-size: cover;
-  filter: progid:dximagetransform.microsoft.alphaimageloader(src='/img/rocket.jpg', sizingMethod='scale');
+}
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Preserve aspet ratio */
+
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+/*
+#bg {
+	position:fixed; 
+	width:100%; 
+	height:100%;
+  //z-index: -1;
+
+	background: url(/img/rocket.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src='/img/rocket.jpg', sizingMethod='scale'); 
   -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='/img/rocket.jpg', sizingMethod='scale')";
 }
+*/
+/*
+#bg img {
+	position:absolute; 
+	top:0; 
+	left:0; 
+	right:0; 
+	bottom:0; 
+	margin:auto; 
+	min-width:50%;
+	min-height:50%;
+}
+*/
 p {
   line-height: 1.3em;
 }

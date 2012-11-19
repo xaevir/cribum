@@ -2,7 +2,7 @@ if (typeof exports === 'object') {
   define = function (factory) {
     module.exports = factory(require, exports, module);
   };
-  bcrypt = require('bcrypt')
+  //bcrypt = require('bcrypt')
   var app = require('../../../app')
 }
 
