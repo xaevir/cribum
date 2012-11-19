@@ -22,9 +22,10 @@ body {
   background: #f7f7f7;
   background: #ccc; 
   background: #fff;
-  //background: #ccc;
-  //background: #e5f6f6;
-  //background: url(/img/orange-bokeh-bg.jpg) no-repeat top center;
+  background: url(/img/rocket.jpg) no-repeat;
+  background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src='/img/rocket.jpg', sizingMethod='scale'); 
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='/img/rocket.jpg', sizingMethod='scale')";
 }
 
 p {
@@ -220,6 +221,16 @@ li {
   }
 }
 
+#ask {
+  h1 {
+    background: #fff;
+    padding: 20px;
+  }
+  button {
+    display: block; 
+  }
+}
+
 #questions {
   .question {
      #dollarValue {
@@ -262,11 +273,28 @@ li {
 }
 
 .home {
+  min-height: 400px;
+  .jumbotron {
+    margin-top: 0;   
+    margin-bottom: 0;
+    h1 {
+      font-size: 60px; 
+      margin: 50px 0;
+    }
+    p {
+      text-align: center;  
+      margin-bottom: 50px;
+    }
+    span {
+      font-size: 46px;
+    }
+  }
   #signup {
     .border-radius-for-pie(7px);
     padding: 10px;
     width: 360px;
     margin: 0 auto;
+    margin-bottom: 20px;
     background: #FFB901;
     p {
       font-size: 20px; 
@@ -515,7 +543,6 @@ li {
 
 #user-menu {
   float: right;
-  width: 500px;  
   padding: 0;  
   margin: 15px 0 0 0;  
   li {  
@@ -673,7 +700,7 @@ li {
 
 
 footer {
-  border-top: 1px solid #eee;
+  //border-top: 1px solid #eee;
   padding-top: 5px;
   margin: 20px 0;
   .tabs, .pills {

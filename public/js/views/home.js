@@ -33,9 +33,7 @@ return Backbone.View.extend({
   },
 
   notice: function(model){
-    var msg  = '<p>Thank you very much for signing up. I am excited about starting this site. '
-        msg += ' I will email you back as soon as possible.</p>'
-        msg += '<p style="float: right">- Bobby</p>'
+    var msg  = '<p>Thanks for joining our mission of health!'
     new ModalView(msg)
   },
 

@@ -5,7 +5,7 @@ define(function(require) {
     url: '/questions',
 
     validation: {
-      name: {
+      price: {
         required: true,
       },
       email: {

@@ -5067,6 +5067,10 @@ body {
   background: #f7f7f7;
   background: #ccc;
   background: #fff;
+  background: url(/img/rocket.jpg) no-repeat;
+  background-size: cover;
+  filter: progid:dximagetransform.microsoft.alphaimageloader(src='/img/rocket.jpg', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='/img/rocket.jpg', sizingMethod='scale')";
 }
 p {
   line-height: 1.3em;
@@ -5393,6 +5397,13 @@ li {
   height: 100px;
   width: 300px;
 }
+#ask h1 {
+  background: #fff;
+  padding: 20px;
+}
+#ask button {
+  display: block;
+}
 #questions .question #dollarValue {
   color: green;
 }
@@ -5436,6 +5447,24 @@ li {
   box-sizing: border-box;
   height: 90px;
 }
+.home {
+  min-height: 400px;
+}
+.home .jumbotron {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.home .jumbotron h1 {
+  font-size: 60px;
+  margin: 50px 0;
+}
+.home .jumbotron p {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.home .jumbotron span {
+  font-size: 46px;
+}
 .home #signup {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
@@ -5444,6 +5473,7 @@ li {
   padding: 10px;
   width: 360px;
   margin: 0 auto;
+  margin-bottom: 20px;
   background: #FFB901;
 }
 .home #signup p {
@@ -5721,7 +5751,6 @@ li {
 }
 #user-menu {
   float: right;
-  width: 500px;
   padding: 0;
   margin: 15px 0 0 0;
 }
@@ -5880,7 +5909,6 @@ li {
   border-radius: 0 3px 3px 0;
 }
 footer {
-  border-top: 1px solid #eee;
   padding-top: 5px;
   margin: 20px 0;
 }
